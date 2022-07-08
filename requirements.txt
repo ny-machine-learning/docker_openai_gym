@@ -9,4 +9,5 @@ torchaudio
 matplotlib
 seaborn
 pandas
+gym[classic-control]
 
