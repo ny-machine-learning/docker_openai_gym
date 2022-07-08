@@ -1,8 +1,8 @@
 # Use python3.7
 # See https://docs.docker.com/samples/library/python/ for latest 
-FROM python:3.7
+FROM python:3.9
 
-LABEL maintainer="Tom Titcombe <t.j.titcombe@gmail.com>"
+LABEL maintainer=""
 
 # Working directory is / by default. We explictly state it here for posterity
 WORKDIR /
@@ -17,8 +17,8 @@ RUN apt-get update \
        xorg-dev \
        libsdl2-dev \
        swig \
-       cmake \
-       python-opengl
+       cmake
+#       python-opengl
 
 # Upgrade pip3
 RUN pip3 install --upgrade pip
@@ -37,6 +37,8 @@ RUN mkdir /home/my_rl/
 
 # Set it as the working directory
 WORKDIR /home/my_rl/
+
+COPY gym/* /home/my_rl/
 
 # Copy over the start-up script
 ADD scripts/startup_script.sh /usr/local/bin/startup_script.sh
